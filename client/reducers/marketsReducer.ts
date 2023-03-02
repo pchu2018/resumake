@@ -8,7 +8,7 @@ interface initialStateType {
 }
 
 interface marketList {
-  marketId: number
+  marketId: 
 }
 
 const initialState: initialStateType = {

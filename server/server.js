@@ -1,10 +1,15 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+require('dotenv').config();
+const apiRouter = require('./routes/api');
 
-// serve index.html on the route '/'
-app.get("/", (req, res) => {
-  return res.status(200).sendFile(path.join(__dirname, "../index.html"));
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use('/api', apiRouter)
+
+app.listen(3000, () => {
+  console.log('Server running on PORT 3000')
 });
-
-app.listen(3000);

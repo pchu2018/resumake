@@ -11,7 +11,12 @@ const db = require('../models/resumesModel');
 const testController = {};
 testController.test = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
     let sqlQuery = 'SELECT NOW() AS "theTime"';
-    const testQuery = yield db.query(sqlQuery);
-    console.log(testQuery);
+    try {
+        const testQuery = yield db.query(sqlQuery);
+        console.log(testQuery);
+    }
+    catch (e) {
+        console.log(e, e.message);
+    }
 });
 module.exports = testController;

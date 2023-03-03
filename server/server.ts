@@ -1,5 +1,5 @@
 import express, { Express, Request, Response } from "express";
-import dotenv from "dotenv";
+import * as dotenv from "dotenv";
 const apiRouter = require('./routes/api');
 
 dotenv.config();

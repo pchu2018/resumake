@@ -19,7 +19,7 @@ const initialState: initialStateType = {
   newLocation: '',
 };
 
-const marketsReducer = createReducer(initialState, (builder) => {
+const resumeReducer = createReducer(initialState, (builder) => {
   builder
     .addCase(actions.addMarket, (state, action) => {
       state.lastMarketId ++;
@@ -46,4 +46,4 @@ const marketsReducer = createReducer(initialState, (builder) => {
     })
 });
 
-export default marketsReducer;
+export default resumeReducer;

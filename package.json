@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "concurrently \"npx tsc --watch\" \"nodemon -q build/server/server.js\"",
+    "compile": "tsc -p ./",
+    
     "build": "webpack",
     "dev": "webpack serve --open & nodemon server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"

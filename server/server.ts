@@ -11,7 +11,7 @@ app.get("/", (req: Request, res: Response) => {
   return res.status(200).sendFile(path.join(__dirname, "../index.html"));
 });
 
-app.use((req: , res) =>
+app.use((req, res) =>
   res.status(404).send('This is not the page you are looking for...')
 );
 

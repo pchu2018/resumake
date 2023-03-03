@@ -1,48 +1,33 @@
 // just for reference
 import { createReducer } from '@reduxjs/toolkit';
 import * as actions from '../actions/actions';
+import { ResumeType, ComponentType, ProfileType } from '../../types';
 
 interface initialStateType {
-  totalMarkets: number,
-  totalCards: number,
-}
-
-interface marketList {
-  marketId: 
+  currentResume: ResumeType | null,
+  components: ComponentType[],
+  profile: ProfileType
 }
 
 const initialState: initialStateType = {
-  totalMarkets: 0,
-  totalCards: 0,
-  marketList: any[],
-  lastMarketId: 10000,
-  newLocation: '',
+  currentResume: null,
+  components: [],
+  profile: {
+    name: 'Matt Severyn',
+    location: 'North Carolina',
+    email: 'matt.s@codesmith.io',
+    jobTitle: 'Head Honcho',
+    additional: '',
+  }
 };
 
 const resumeReducer = createReducer(initialState, (builder) => {
   builder
-    .addCase(actions.addMarket, (state, action) => {
-      state.lastMarketId ++;
-      state.totalMarkets ++;
-      state.marketList.push({
-        marketId: state.lastMarketId,
-        location: state.newLocation,
-        cards: 0,
-        percentage: 0,
-      });
-      state.newLocation = '';
+    .addCase(actions.createResume, (state, actions) => {
+      state.currentResume = null;
     })
-    .addCase(actions.setNewLocation, (state, action) => {
-      state.newLocation = action.payload;
-    })
-    .addCase(actions.addCard, (state,action) => {
-      state.marketList[action.payload].cards ++;
-      state.totalCards ++;
-    })
-    .addCase(actions.deleteCard, (state,action) => {
-      if (state.marketList[action.payload].cards === 0) return;
-      state.marketList[action.payload].cards --;
-      state.totalCards --;
+    .addCase(actions.updateResume, (state, action) => {
+      state.currentResume = action.payload;
     })
 });
 

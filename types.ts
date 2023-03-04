@@ -1,9 +1,15 @@
 export interface ResumeType {
   title: string,
-  components: ComponentType[]
+  lastModified: Date,
+  sections: string[] //list of component database id for that resume
 }
 
-export interface ComponentType {
+// export interface databaseIdType {
+//   databaseId: string,
+// } 
+
+export interface SectionType {
+  databaseId: string,
   header: string,
   bullets: string
 }
@@ -14,4 +20,12 @@ export interface ProfileType {
   email: string,
   jobTitle: string,
   additional: string,
+}
+
+export interface initialStateType {
+  userId: string,
+  currentResume: ResumeType | null,
+  resumes: ResumeType[] | null,
+  sections: SectionType[],
+  profile: ProfileType
 }

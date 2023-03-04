@@ -1,9 +1,9 @@
 import {DndContext, MouseSensor, useSensor, useSensors} from '@dnd-kit/core';
 import {arrayMove, SortableContext, useSortable} from '@dnd-kit/sortable';
 import {CSS} from '@dnd-kit/utilities';
-import {ReactNode, useState, useEffect, useRef, useMemo, useCallback} from 'react';
+import { useState, useEffect, useRef, useMemo} from 'react';
 import { throttle } from '../utils';
-import ResumeComponent from '../components/ResumeComponent';
+import ResumeSection from '../components/ResumeSection';
 
 
 export default function ResumeContainer() {
@@ -49,7 +49,7 @@ export default function ResumeContainer() {
     <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
       <SortableContext items={items}>
         {items.map((id) => (
-          <ResumeComponent key={id} id={id} content={`hello i am ${id}`} />
+          <ResumeSection key={id} databaseId={id} header={'some header'} bullets={`hello i am ${id}`} />
         ))}
       </SortableContext>
     </DndContext>

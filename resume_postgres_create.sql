@@ -41,14 +41,18 @@ ALTER TABLE component ADD CONSTRAINT fk_component_user FOREIGN KEY(userId) REFER
 ALTER TABLE grid ADD CONSTRAINT fk_grid_resume FOREIGN KEY(resumeId) REFERENCES resume(resumeId);
 ALTER TABLE grid ADD CONSTRAINT fk_grid_component FOREIGN KEY(componentId) REFERENCES component(componentId);
 
-INSERT INTO app_user VALUES (1, 'George', 'London', 'LinkedIn.com/george', 'george@gmail.com', 'CTO');
-INSERT INTO app_user VALUES (2, 'Jerry', 'Paris', 'LinkedIn.com/jerry', 'jerry@gmail.com', 'CEO');
+INSERT INTO app_user (name, location, linkedin, email) VALUES ('George', 'London', 'LinkedIn.com/george', 'george@gmail.com');
+INSERT INTO app_user (name, location, linkedin, email) VALUES ('Jerry', 'Paris', 'LinkedIn.com/jerry', 'jerry@gmail.com');
 
 INSERT INTO resume (userId) VALUES (1);
 INSERT INTO resume (userId) VALUES (2);
 
-INSERT INTO component VALUES (1, 1, 'cool header', 'sweet bullets');
-INSERT INTO component VALUES (2, 2, 'nice header', 'dope bullets');
+INSERT INTO component (userId, header, bullets) VALUES (1, 'cool header', 'sweet bullets');
+INSERT INTO component  (userId, header, bullets) VALUES (1, 'nice header', 'dope bullets');
+INSERT INTO component (userId, header, bullets) VALUES (2, 'another header', 'more bullets');
+INSERT INTO component  (userId, header, bullets) VALUES (2, 'real header', 'real bullets');
 
-INSERT INTO grid VALUES (1, 1, 1, 2, 3);
-INSERT INTO grid VALUES (2, 2, 2, 4, 5);
+INSERT INTO grid (resumeId, componentId, x_coordinate, y_coordinate) VALUES (1, 1, 1, 1);
+INSERT INTO grid (resumeId, componentId, x_coordinate, y_coordinate) VALUES (1, 2, 2, 2);
+INSERT INTO grid (resumeId, componentId, x_coordinate, y_coordinate) VALUES (2, 3, 1, 1);
+INSERT INTO grid (resumeId, componentId, x_coordinate, y_coordinate) VALUES (2, 4, 2, 2);

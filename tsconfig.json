@@ -9,5 +9,14 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
   },
-  "include": ["./server/**/*"]
+  "include": [
+    "./server/**/*",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/**/*.ts",
+    "**/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

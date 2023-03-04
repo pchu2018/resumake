@@ -23,7 +23,7 @@ const initialState: initialStateType = {
 
 const resumeReducer = createReducer(initialState, (builder) => {
   builder
-    .addCase(actions.createResume, (state, actions) => {
+    .addCase(actions.createResume, (state, action) => {
       state.currentResume = null;
     })
     .addCase(actions.updateResume, (state, action) => {

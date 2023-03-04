@@ -49,11 +49,7 @@ export default function ResumeContainer() {
     <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
       <SortableContext items={items}>
         {items.map((id) => (
-<<<<<<< HEAD
-          <ResumeComponent key={id} id={id} content={`hi i am ${id}`} />
-=======
           <ResumeComponent key={id} id={id} content={`hello i am ${id}`} />
->>>>>>> 27d4686289bfca45bdf264d3c5d36d51afdc88f1
         ))}
       </SortableContext>
     </DndContext>

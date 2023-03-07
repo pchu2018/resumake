@@ -3,7 +3,7 @@
 --
 
 CREATE TABLE app_user (
-userId serial NOT NULL,
+userId serial NOT NULL UNIQUE,
 name varchar NOT NULL,
 location varchar NOT NULL,
 linkedin varchar NOT NULL,
@@ -13,14 +13,14 @@ CONSTRAINT user_pk PRIMARY KEY (userId)
 );
 
 CREATE TABLE resume (
-resumeId serial NOT NULL,
+resumeId serial NOT NULL UNIQUE,
 userId int NOT NULL,
 posting_date timestamp default CURRENT_TIMESTAMP,
 CONSTRAINT resume_pk PRIMARY KEY (resumeId)
 );
 
 CREATE TABLE component (
-componentId serial NOT NULL,
+componentId serial NOT NULL UNIQUE,
 userId int NOT NULL,
 header varchar NOT NULL,
 bullets varchar NOT NULL,
@@ -28,7 +28,7 @@ CONSTRAINT component_pk PRIMARY KEY (componentId)
 );
 
 CREATE TABLE grid (
-gridId serial NOT NULL,
+gridId serial NOT NULL UNIQUE,
 resumeId int NOT NULL,
 componentId int NOT NULL,
 x_coordinate int NOT NULL DEFAULT 0,

@@ -15,3 +15,15 @@ export interface ProfileType {
   jobTitle: string,
   additional: string,
 }
+
+export interface UserData {
+  userId: number,
+  name: string,
+  location: string,
+  linkedin: string,
+  email: string,
+  job_title?: string,
+  resumeId: number,
+  components: ComponentType[]
+
+}

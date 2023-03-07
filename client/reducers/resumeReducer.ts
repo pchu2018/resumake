@@ -5,6 +5,7 @@ import { ResumeType, SectionType, ProfileType, initialStateType } from '../../ty
 
 const initialState: initialStateType = {
   userId: '',
+  grids: null,
   currentResume: null,
   resumes: [],
   sections: [{databaseId: 'test', header: 'cool header', bullets: 'some nice bullets'}],
@@ -31,8 +32,15 @@ const resumeReducer = createReducer(initialState, (builder) => {
     .addCase(actions.updateProfile, (state, action) => {
       state.profile = action.payload;
     })
-    .addCase(actions.createComponent, (state, action) => {
+    .addCase(actions.createSection, (state, action) => {
       state.sections = action.payload;
+    })
+    .addCase(actions.updateSection, (state, action) => {
+      // find section in state and update
+      for (let section of state.sections) {
+        if(section.databaseId === action.payload.databaseId) section = action.payload;
+        break;
+      };
     })
 });
 

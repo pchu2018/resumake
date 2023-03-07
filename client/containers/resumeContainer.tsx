@@ -4,6 +4,8 @@ import {CSS} from '@dnd-kit/utilities';
 import { useState, useEffect, useRef, useMemo} from 'react';
 import { throttle } from '../utils';
 import ResumeSection from '../components/ResumeSection';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store';
 
 
 export default function ResumeContainer() {
@@ -18,6 +20,18 @@ export default function ResumeContainer() {
 
   const isInitialMount = useRef(true);
 
+  // access resume id by initial state -> current resume 
+  const resume_id = useSelector((state:RootState) => state.initialState.currentResume)
+  const user_id = useSelector((state:RootState) => state.initialState.userId)
+  const grids = useSelector((state:RootState) => state.initialState.grids)
+
+  // initializing items
+  const gridIds = grids.map(x => x.gridId)
+  useEffect(() => {
+    setItems(gridIds)
+  }, [])
+
+  // throttle for update reumse
   useEffect(() => {
     if (isInitialMount.current) {
       isInitialMount.current = false;
@@ -28,7 +42,46 @@ export default function ResumeContainer() {
   }, [items])
 
   // will change to fetch
-  const callback = (items: string[]) => console.log(items);
+  const callback = (items: string[]) => {
+    console.log(items)
+
+    // fetch to update the resume posting date
+    const updateResumeTimestamp = {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        // query by resume id to update the timestamp
+        resumeId: resume_id,
+      }),
+    };
+
+    fetch(`/api/resume`, updateResumeTimestamp).then((response) => {
+      if (response.status === 200) {
+        console.log('update resume successfully')
+      }
+    });
+
+    // fetch to update all the grids in the resume
+    const updateGrid = {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        // query by resume id to update the timestamp
+        resumeId: resume_id,
+        grids: items,
+      }),
+    };
+
+    fetch(`/api/grid`, updateGrid).then((response) => {
+      if (response.status === 200) {
+        console.log(`update grid successfully`)
+      }
+    });
+  };
 
   // memo-ize throttled function
   const throttledFetch = useMemo(() => throttle(callback, 5000), [])

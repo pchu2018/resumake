@@ -1,10 +1,10 @@
-import ComponentContainer from "./componentContainer";
+import SectionContainer from "./sectionContainer";
 import ResumeContainer from "./resumeContainer";
 
 export default function MasterEditorContainer() {
   return (
-    <div>editor container
-      <ComponentContainer/>
+    <div>Master Container
+      <SectionContainer/>
       <ResumeContainer/>
     </div>
   )

@@ -5,10 +5,18 @@ import { ResumeType, SectionType, ProfileType, initialStateType } from '../../ty
 
 const initialState: initialStateType = {
   userId: '',
-  grids: null,
   currentResume: null,
+  currentGrids: [
+    {gridId: '1', resumeId: '1', componentId: 'test', y_coordinate: 0, x_coordinate: 7}, 
+    {gridId: '2', resumeId: '1', componentId: 'test1', y_coordinate: 0, x_coordinate: 8},
+    {gridId: '3', resumeId: '1', componentId: 'test2', y_coordinate: 0, x_coordinate: 9}
+  ],
   resumes: [],
-  sections: [{databaseId: 'test', header: 'cool header', bullets: 'some nice bullets'}],
+  sections: [
+    {databaseId: 'test', header: 'cool header', bullets: 'some nice bullets'},
+    {databaseId: 'test1', header: 'dope header', bullets: 'some fresh bullets'},
+    {databaseId: 'test2', header: 'dope2 header', bullets: 'some fresh bullets'}
+  ],
   profile: {
     name: 'Matt Severyn',
     location: 'North Carolina',

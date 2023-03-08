@@ -10,13 +10,14 @@
     "esModuleInterop": true,
   },
   "include": [
-    "./server/**/*",
     "**/*.ts",
     "**/*.tsx",
     "**/**/*.ts",
     "**/**/*.tsx"
   ],
   "exclude": [
-    "node_modules"
+    "./server/**/*",
+    "node_modules",
+    "_tests_"
   ]
 }

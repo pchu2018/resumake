@@ -2,7 +2,6 @@ export interface ResumeType {
   resumeId: string,
   title: string,
   lastModified: Date,
-  sections: string[] //list of component database id for that resume
 }
 
 // export interface databaseIdType {
@@ -33,7 +32,7 @@ export interface GridType{
 
 export interface initialStateType {
   userId: string,
-  grids: GridType[] | null,
+  currentGrids: GridType[],
   currentResume: ResumeType | null,
   resumes: ResumeType[] | null,
   sections: SectionType[],

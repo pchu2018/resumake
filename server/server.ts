@@ -1,13 +1,15 @@
 import express, { Express, Request, Response } from "express";
 import * as dotenv from "dotenv";
-const apiRouter = require('./routes/api');
+const resumeRouter = require('./routes/resume');
+const userRouter = require('./routes/user')
 
 dotenv.config();
 
 const app: Express = express();
 const path = require("path");
 
-app.use('/api', apiRouter);
+app.use('/resume', resumeRouter);
+app.use('/user', userRouter);
 
 // serve index.html on the route '/'
 app.get("/", (req: Request, res: Response) => {

@@ -55,12 +55,10 @@ export default function ResumeContainer() {
     }));
   //  }
    
-  }, [items])
+  }, [items, sections])
   
-  // will change to fetch
+  // post updates to api
   const callback = (items: string[]) => {
-    console.log(items)
-
     // fetch to update all the grids in the resume
     const updateGrid = {
       method: "PATCH",
@@ -69,16 +67,16 @@ export default function ResumeContainer() {
       },
       body: JSON.stringify({
         // query by resume id to update the timestamp
-        resumeId: currentResume.resumeId,
+        resumeId: currentResume?.resumeId,
         grids: items,
       }),
     };
 
-    fetch(`/api/grid`, updateGrid).then((response) => {
-      if (response.status === 200) {
-        console.log(`update grid successfully`)
-      }
-    });
+    // fetch(`/api/grid`, updateGrid).then((response) => {
+    //   if (response.status === 200) {
+    //     console.log(`update grid successfully`)
+    //   }
+    // });
   };
 
   // memo-ize throttled function

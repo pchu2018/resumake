@@ -13,8 +13,11 @@ export default function ResumeSection({ databaseId, header, bullets }: SectionTy
 
   // updates to section should be posted to store, then updated in db
   const handleChange = () => {
+    console.log(headerContent)
     // dispatch new Section object to store
-    dispatch(updateSection({databaseId, header: headerContent, bullets: bulletContent}));
+    const payload = {databaseId, header: headerContent, bullets: bulletContent};
+    console.log(payload);
+    dispatch(updateSection(payload));
     // send post request to api
     fetch('/updateSection', {
       method: 'POST',
@@ -29,8 +32,6 @@ export default function ResumeSection({ databaseId, header, bullets }: SectionTy
     if (ref.current && !ref.current.contains(event.target as Node)) {
       // update render
       setEditing(false);
-      // trigger update logic
-      handleChange();
     }
   };
   //attach listener to document
@@ -41,8 +42,13 @@ export default function ResumeSection({ databaseId, header, bullets }: SectionTy
     };
   }, []);
 
+  useEffect(() => {
+    // trigger update when editing state is false and header or bullets change
+    if (!editing && (headerContent != header || bulletContent != bullets)) handleChange();
+  }, [editing])
+
   const staticData = <div onClick={() => setEditing(true)}><p>{headerContent}</p>{bulletContent}</div>;
-  const editable = <div ref={ref}><input placeholder={headerContent} onChange={event => setHeaderContent(event.target.value)}/>
+  const editable = <div ref={ref}><input placeholder={headerContent} onChange={event => {setHeaderContent(event.target.value); console.log(headerContent)}}/>
                     <input placeholder={bulletContent} onChange={event => setBulletContent(event.target.value)}/></div>
 
   return (

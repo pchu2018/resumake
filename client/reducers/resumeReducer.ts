@@ -1,5 +1,5 @@
 // just for reference
-import { createReducer } from '@reduxjs/toolkit';
+import { createReducer, current } from '@reduxjs/toolkit';
 import * as actions from '../actions/actions';
 import { ResumeType, SectionType, ProfileType, initialStateType } from '../../types';
 
@@ -44,10 +44,18 @@ const resumeReducer = createReducer(initialState, (builder) => {
       state.sections = action.payload;
     })
     .addCase(actions.updateSection, (state, action) => {
+      const { sections } = current(state);
       // find section in state and update
-      for (let section of state.sections) {
-        if(section.databaseId === action.payload.databaseId) section = action.payload;
-        break;
+      console.log('dispatched to update section with ', action.payload, 'with sections ', sections);
+
+      for (let i = 0; i < sections.length; i++) {
+        console.log(sections[i].databaseId)
+        if(sections[i].databaseId == action.payload.databaseId) {
+          console.log(sections[i])
+          state.sections[i] = action.payload;
+          break;
+        } else console.log('no section found')
+      
       };
     })
 });

@@ -2,6 +2,7 @@ import { SectionType } from '../../types';
 import { useState, useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateSection } from '../actions/actions';
+import AddSectiontoResume from './AddSectiontoResume';
 
 export default function Section({ databaseId, header, bullets }: SectionType) {
   const [headerContent, setHeaderContent] = useState(header);
@@ -54,6 +55,7 @@ export default function Section({ databaseId, header, bullets }: SectionType) {
   return (
     <div >
       {editing ? editable : staticData}
+      <AddSectiontoResume databaseId={databaseId}/>
     </div>
   )
 }

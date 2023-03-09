@@ -1,7 +1,7 @@
 export interface ResumeType {
   resumeId: string,
   title: string,
-  lastModified: Date,
+  lastModified: string,
 }
 
 // export interface databaseIdType {

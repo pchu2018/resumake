@@ -32,7 +32,7 @@ export default function ResumeContainer() {
     const componentIds = currentGrids.map(x => x.componentId)
     setItems(componentIds);
     console.log('setting items to ', items);
-  },[])
+  },[currentGrids])
 
   // throttle for update reumse
   useEffect(() => {
@@ -55,7 +55,7 @@ export default function ResumeContainer() {
     }));
   //  }
    
-  }, [items, sections])
+  }, [items, sections, currentGrids])
   
   // post updates to api
   const callback = (items: string[]) => {

@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateSection } from '../actions/actions';
 
-export default function ResumeSection({ databaseId, header, bullets }: SectionType) {
+export default function Section({ databaseId, header, bullets }: SectionType) {
   const [headerContent, setHeaderContent] = useState(header);
   const [bulletContent, setBulletContent] = useState(bullets);
 

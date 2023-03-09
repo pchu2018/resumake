@@ -18,6 +18,6 @@
   "exclude": [
     "./server/**/*",
     "node_modules",
-    "_tests_"
+    "__tests__"
   ]
 }

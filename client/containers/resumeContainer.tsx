@@ -10,6 +10,7 @@ import { SectionType } from '../../types';
 
 
 export default function ResumeContainer() {
+  // sections should update when store is dispatched to
   const sections = useSelector((state:RootState) => state.initialState.sections);
   const [items, setItems] = useState([]);
   const [resumeSections, setResumeSections] = useState([]);
@@ -26,8 +27,7 @@ export default function ResumeContainer() {
   // access resume id by initial state -> current resume 
   const { currentResume, userId, currentGrids, profile } = useSelector((state:RootState) => state.initialState);
   
-  // initializing items
-  
+  // initializing items for sortable context
   useEffect(() => {    
     const componentIds = currentGrids.map(x => x.componentId)
     setItems(componentIds);

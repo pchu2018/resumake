@@ -13,9 +13,25 @@ const initialState: initialStateType = {
   ],
   resumes: [],
   sections: [
-    {databaseId: 'test', header: 'cool header', bullets: 'some nice bullets'},
-    {databaseId: 'test1', header: 'dope header', bullets: 'some fresh bullets'},
-    {databaseId: 'test2', header: 'dope2 header', bullets: 'some fresh bullets'}
+    {
+      databaseId: 'test', 
+      header: 'head honcho @ codesmith', 
+      bullets: 'bossed around residents'},
+    {
+      databaseId: 'test1', 
+      header: 'director @ federal bank', 
+      bullets: 'responsible for minting billions of mattbucks per hour, leading to inflation'
+    },
+    {
+      databaseId: 'test2', 
+      header: 'cat butler @ home', 
+      bullets: 'narrowly avoided stepping on his cat at the bottom of the stairs'
+    },
+    {
+      databaseId: 'test3', 
+      header: 'SKILLS', 
+      bullets: 'oversharing, pep talks'
+    }
   ],
   profile: {
     name: 'Matt Severyn',

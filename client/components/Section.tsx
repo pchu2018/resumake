@@ -48,12 +48,14 @@ export default function Section({ databaseId, header, bullets }: SectionType) {
     if (!editing && (headerContent != header || bulletContent != bullets)) handleChange();
   }, [editing])
 
-  const staticData = <div onClick={() => setEditing(true)}><p>{headerContent}</p>{bulletContent}</div>;
+  const tailwind = 'flex my-2 max-w-xs'
+
+  const staticData = <div  onClick={() => setEditing(true)}><p className='font-bold'>{headerContent}</p>{bulletContent}</div>;
   const editable = <div ref={ref}><input placeholder={headerContent} onChange={event => {setHeaderContent(event.target.value); console.log(headerContent)}}/>
-                    <input placeholder={bulletContent} onChange={event => setBulletContent(event.target.value)}/></div>
+                    <br/><input placeholder={bulletContent} onChange={event => setBulletContent(event.target.value)}/></div>
 
   return (
-    <div >
+    <div className={tailwind}>
       {editing ? editable : staticData}
       <AddSectiontoResume databaseId={databaseId}/>
     </div>

@@ -20,8 +20,8 @@ export default function ResumeSection({ databaseId, header, bullets }: SectionTy
 
   return (
     <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
-      {header}
-      {bullets}
+      <div className='pt-4 font-bold'>{header}</div>
+      <div>{bullets}</div>
     </div>
   )
 }

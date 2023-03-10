@@ -105,7 +105,7 @@ export default function ResumeContainer() {
   }
 
   return (
-    <div>{profile.name}
+    <div className='min-w-2xl max-w-3xl mx-auto p-4 border-2 border-lightgrey rounded-lg shadow-inner'><h2 className='text-xl font-semibold mb-1'>{profile.name}</h2>
     <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
       <SortableContext items={items}>
         {resumeSections}

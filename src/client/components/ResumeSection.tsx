@@ -3,7 +3,7 @@ import { useSortable } from '@dnd-kit/sortable';
 import {CSS} from '@dnd-kit/utilities';
 
 
-export default function ResumeSection({ databaseId, header, bullets }: SectionType) {
+export default function ResumeSection({ sectionId, header, bullets }: SectionType) {
 
   const {
     attributes,
@@ -11,7 +11,7 @@ export default function ResumeSection({ databaseId, header, bullets }: SectionTy
     setNodeRef,
     transform,
     transition,
-  } = useSortable({id: databaseId});
+  } = useSortable({id: sectionId});
 
   const style = {
     transform: CSS.Transform.toString(transform),

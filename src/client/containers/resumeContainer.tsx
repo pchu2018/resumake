@@ -25,62 +25,36 @@ export default function ResumeContainer() {
 
   const isInitialMount = useRef(true);
   // access resume id by initial state -> current resume 
-  const { currentResume, userId, currentGrids, profile } = useSelector((state:RootState) => state.initialState);
+  const { currentResume, currentGrids, profile } = useSelector((state:RootState) => state.initialState);
   
-  // initializing items for sortable context
+  // initializing items for sortable context -> update context when currentGrids is changed
   useEffect(() => {    
-    const componentIds = currentGrids.map(x => x.componentId)
+    const componentIds = currentGrids.map(grid => grid.componentId)
     setItems(componentIds);
-    console.log('setting items to ', items);
-  },[currentGrids])
+  }, [currentGrids])
 
-  // throttle for update reumse
+  // throttle for update resume
   useEffect(() => {
     if (isInitialMount.current) {
       isInitialMount.current = false;
    } else {
-       // Your useEffect code here to be run on update
-       throttledFetch(items);
+       throttledUpdateStorage(items);
    }
-   // generate resumeSections
-   console.log('setting items to ', items);
-  //  if (sections.length && currentGrids.length) {
     setResumeSections(items.map((databaseId) => {
-      console.log('sections', sections, 'currentGrids', currentGrids);
-
-        console.log('in setResumeSections ',databaseId)
         const { header, bullets } = findSection(databaseId, sections);
-        return <ResumeSection key={databaseId} databaseId={databaseId} header={header} bullets={bullets} />
-
+        return <ResumeSection key={databaseId} sectionId={databaseId} header={header} bullets={bullets} />
     }));
   //  }
    
   }, [items, sections, currentGrids])
   
-  // post updates to api
-  const callback = (items: string[]) => {
-    // fetch to update all the grids in the resume
-    const updateGrid = {
-      method: "PATCH",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        // query by resume id to update the timestamp
-        resumeId: currentResume?.resumeId,
-        grids: items,
-      }),
-    };
-
-    // fetch(`/api/grid`, updateGrid).then((response) => {
-    //   if (response.status === 200) {
-    //     console.log(`update grid successfully`)
-    //   }
-    // });
+  // post updates to local storage
+  const updateStorage = (items: string[]) => {
+    
   };
 
   // memo-ize throttled function
-  const throttledFetch = useMemo(() => throttle(callback, 5000), [])
+  const throttledUpdateStorage = useMemo(() => throttle(updateStorage, 5000), [])
 
   
   function handleDragEnd(event: any) {
@@ -98,7 +72,7 @@ export default function ResumeContainer() {
     // iterate over sections array and find matching componentId
     let section: SectionType;
     for (const entry of sections) {
-      if (entry.databaseId == id) section = entry;
+      if (entry.sectionId == id) section = entry;
       // break;
     }
     return section;

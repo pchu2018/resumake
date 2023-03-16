@@ -1,9 +1,9 @@
 // just for reference
 import { createReducer, current } from '@reduxjs/toolkit';
 import * as actions from '../actions/actions';
-import { ResumeType, SectionType, GridType, initialStateType } from '../../../types';
+import { ResumeType, SectionType, GridType, UserData } from '../../../types';
 
-const initialState: initialStateType = {
+const initialState: UserData = {
   userId: '',
   currentResume: {resumeId: '1', title: 'My Resume', lastModified: new Date().toString()},
   currentGrids: [
@@ -14,21 +14,21 @@ const initialState: initialStateType = {
   resumes: [],
   sections: [
     {
-      databaseId: 'test', 
+      sectionId: 'test', 
       header: 'head honcho @ codesmith', 
       bullets: 'bossed around residents'},
     {
-      databaseId: 'test1', 
+      sectionId: 'test1', 
       header: 'director @ federal bank', 
       bullets: 'responsible for minting billions of mattbucks per hour, leading to inflation'
     },
     {
-      databaseId: 'test2', 
+      sectionId: 'test2', 
       header: 'cat butler @ home', 
       bullets: 'narrowly avoided stepping on his cat at the bottom of the stairs'
     },
     {
-      databaseId: 'test3', 
+      sectionId: 'test3', 
       header: 'SKILLS', 
       bullets: 'oversharing, pep talks'
     }
@@ -38,7 +38,8 @@ const initialState: initialStateType = {
     location: 'North Carolina',
     email: 'matt.s@codesmith.io',
     jobTitle: 'Head Honcho',
-    additional: '',
+    linkedIn: 'linkedin.com/matt',
+    additional: [],
   }
 };
 
@@ -57,7 +58,7 @@ const resumeReducer = createReducer(initialState, (builder) => {
       state.profile = action.payload;
     })
     .addCase(actions.createSection, (state, action) => {
-      state.sections.push({databaseId: action.payload, header: 'HEADER', bullets: 'ADD CONTENT'});
+      state.sections.push({sectionId: action.payload, header: 'HEADER', bullets: 'ADD CONTENT'});
     })
     .addCase(actions.updateSection, (state, action) => {
       const { sections } = current(state);
@@ -65,8 +66,8 @@ const resumeReducer = createReducer(initialState, (builder) => {
       console.log('dispatched to update section with ', action.payload, 'with sections ', sections);
 
       for (let i = 0; i < sections.length; i++) {
-        console.log(sections[i].databaseId)
-        if(sections[i].databaseId == action.payload.databaseId) {
+        console.log(sections[i].sectionId)
+        if(sections[i].sectionId == action.payload.sectionId) {
           console.log(sections[i])
           state.sections[i] = action.payload;
           break;

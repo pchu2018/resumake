@@ -9,9 +9,13 @@ export interface ResumeType {
 // } 
 
 export interface SectionType {
-  databaseId: string,
+  sectionId: string,
   header: string,
   bullets: string
+}
+
+export interface ProfileSection {
+  key: string
 }
 
 export interface ProfileType {
@@ -19,7 +23,8 @@ export interface ProfileType {
   location: string,
   email: string,
   jobTitle: string,
-  additional: string,
+  linkedIn: string,
+  additional: ProfileSection[],
 }
 
 export interface GridType{
@@ -30,7 +35,7 @@ export interface GridType{
   y_coordinate: number,
 }
 
-export interface initialStateType {
+export interface UserData {
   userId: string,
   currentGrids: GridType[],
   currentResume: ResumeType | null,

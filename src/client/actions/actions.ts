@@ -1,10 +1,10 @@
 // import actionType constants
 import { createAction } from '@reduxjs/toolkit';
-import {ResumeType, SectionType, initialStateType, ProfileType} from '../../../types';
+import {ResumeType, SectionType, UserData, ProfileType} from '../../../types';
 import { useSectionPayload } from './actionTypes';
 
 // actionTypes need 
-export const initializeStore = createAction<initialStateType>('INITIALIZE_STORE');
+export const initializeStore = createAction<UserData>('INITIALIZE_STORE');
 export const createResume = createAction<undefined>('CREATE_RESUME');
 export const updateResume = createAction<ResumeType>('UPDATE_RESUME');
 export const deleteResume = createAction<string>('DELETE_RESUME');

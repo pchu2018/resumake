@@ -4,7 +4,6 @@ import * as actions from '../actions/actions';
 import { ResumeType, SectionType, GridType, UserData } from '../../../types';
 
 const initialState: UserData = {
-  userId: '',
   currentResume: {resumeId: '1', title: 'My Resume', lastModified: new Date().toString()},
   currentGrids: [
     {gridId: '1', resumeId: '1', componentId: 'test', y_coordinate: 0, x_coordinate: 7}, 

@@ -1,5 +1,5 @@
 import {DndContext, MouseSensor, useSensor, useSensors} from '@dnd-kit/core';
-import {arrayMove, SortableContext, useSortable} from '@dnd-kit/sortable';
+import { arrayMove, SortableContext } from '@dnd-kit/sortable';
 import {CSS} from '@dnd-kit/utilities';
 import { useState, useEffect, useRef, useMemo} from 'react';
 import { throttle } from '../../utils';
@@ -7,6 +7,7 @@ import ResumeSection from '../components/ResumeSection';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store';
 import { SectionType } from '../../../types';
+import { updateGrid } from '../api/storageApi';
 
 
 export default function ResumeContainer() {
@@ -48,7 +49,7 @@ export default function ResumeContainer() {
    
   }, [items, sections, currentGrids])
   
-  // post updates to local storage
+  // post updated items list to local storage
   const updateStorage = (items: string[]) => {
     
   };

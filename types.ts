@@ -36,7 +36,6 @@ export interface GridType{
 }
 
 export interface UserData {
-  userId: string,
   currentGrids: GridType[],
   currentResume: ResumeType | null,
   resumes: ResumeType[] | null,

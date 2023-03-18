@@ -15,7 +15,7 @@ export default function SectionContainer() {
   const profile = useSelector((state:RootState) => state.initialState.profile)
 
   // create array of components to render
-  const resumeSections = sections.map((comp: SectionType) => {
+  const resumeSections = sections?.map((comp: SectionType) => {
     return <Section key={comp.sectionId} sectionId={comp.sectionId} header={comp.header} bullets={comp.bullets} />
   })
 

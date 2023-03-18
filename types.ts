@@ -30,7 +30,7 @@ export interface ProfileType {
 export interface GridType{
   gridId: string,
   resumeId: string,
-  componentId: string,
+  sectionId: string,
   x_coordinate: number,
   y_coordinate: number,
 }

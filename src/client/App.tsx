@@ -9,6 +9,7 @@ export default function App() {
 
   // get state and dispatch to store
   const initialState = getInitialState();
+  console.log('loading app and getting initial state:', initialState)
   if (initialState.profile) {
     dispatch(initializeStore(initialState));
   }

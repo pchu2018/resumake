@@ -6,9 +6,9 @@ import { ResumeType, SectionType, GridType, UserData } from '../../../types';
 const initialState: UserData = {
   currentResume: {resumeId: '1', title: 'My Resume', lastModified: new Date().toString()},
   currentGrids: [
-    {gridId: '1', resumeId: '1', componentId: 'test', y_coordinate: 0, x_coordinate: 7}, 
-    {gridId: '2', resumeId: '1', componentId: 'test1', y_coordinate: 0, x_coordinate: 8},
-    {gridId: '3', resumeId: '1', componentId: 'test2', y_coordinate: 0, x_coordinate: 9}
+    {gridId: '1', resumeId: '1', sectionId: 'test', y_coordinate: 0, x_coordinate: 7}, 
+    {gridId: '2', resumeId: '1', sectionId: 'test1', y_coordinate: 0, x_coordinate: 8},
+    {gridId: '3', resumeId: '1', sectionId: 'test2', y_coordinate: 0, x_coordinate: 9}
   ],
   resumes: [],
   sections: [
@@ -45,7 +45,7 @@ const initialState: UserData = {
 const resumeReducer = createReducer(initialState, (builder) => {
   builder
     .addCase(actions.initializeStore, (state, action) => {
-      state = action.payload;
+      return state = action.payload;
     })
     .addCase(actions.createResume, (state, action) => {
       state.currentResume = null;
@@ -79,7 +79,7 @@ const resumeReducer = createReducer(initialState, (builder) => {
       const newGrid: GridType = {
         resumeId: currentResume.resumeId,
         gridId: action.payload.gridId,
-        componentId: action.payload.componentId,
+        sectionId: action.payload.sectionId,
         y_coordinate: 0,
         x_coordinate: 0
       };

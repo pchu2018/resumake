@@ -14,7 +14,7 @@ export default function AddSectiontoResume({databaseId}: {databaseId: string}) {
   const handleClick = () => {
     // fetch new grid item to api and return back gridId
     const mockGrid = (Math.random()*10).toString();
-    const mockPayload: useSectionPayload = {gridId: mockGrid, componentId: databaseId};
+    const mockPayload: useSectionPayload = {gridId: mockGrid, sectionId: databaseId};
     dispatch(useSection(mockPayload));
   }
 

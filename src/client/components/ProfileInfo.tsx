@@ -46,22 +46,22 @@ export default function ProfileInformation( { info }: ProfileProps ) {
   }
 
   const blank = (
-    <div>
+    <div onClick={() => handleProfileClick()}>
       <h1>Your name here</h1>
       <span>Location</span><span>LinkedIn</span>
     </div>
   );
   const populated = (
-    <div>
+    <div onClick={() => handleProfileClick()}>
       <h1>{info.name}</h1>
       <span>{info.location}</span><span>{info.linkedIn}</span>
-      <button onClick={() => handleButtonClick()}>save</button>
     </div>
   )
   const editingModal = (
     <div>
       <input placeholder={info.name} onChange={(event) => setName(event.target.value)}></input>
       <input placeholder={info.location} onChange={(event) => setLocation(event.target.value)}></input>
+      <button onClick={() => handleButtonClick()}>save</button>
     </div>
   )
 

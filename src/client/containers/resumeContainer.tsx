@@ -30,7 +30,7 @@ export default function ResumeContainer() {
   
   // initializing items for sortable context -> update context when currentGrids is changed
   useEffect(() => {    
-    const componentIds = currentGrids.map(grid => grid.componentId)
+    const componentIds = currentGrids?.map(grid => grid.sectionId)
     setItems(componentIds);
   }, [currentGrids])
 
@@ -41,7 +41,7 @@ export default function ResumeContainer() {
    } else {
        throttledUpdateStorage(items);
    }
-    setResumeSections(items.map((databaseId) => {
+    setResumeSections(items?.map((databaseId) => {
         const { header, bullets } = findSection(databaseId, sections);
         return <ResumeSection key={databaseId} sectionId={databaseId} header={header} bullets={bullets} />
     }));

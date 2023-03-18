@@ -1,5 +1,5 @@
 import { setStorageString, getStorageParse } from "../../utils";
-import { UserData, ResumeType } from "../../../types";
+import { UserData, ResumeType, ProfileType } from "../../../types";
 
 export function updateGrid(items: string[]) {
   // retrieve current grids
@@ -25,4 +25,8 @@ export function getInitialState(): UserData {
       resumes,
       sections
     }
+}
+
+export function saveProfile(profile: ProfileType) {
+  setStorageString('profile', profile);
 }

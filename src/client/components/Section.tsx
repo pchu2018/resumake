@@ -1,7 +1,10 @@
-import { SectionType } from '../../../types';
+// library imports
 import { useState, useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+// internal imports
+import { SectionType } from '../../../types';
 import { updateSection } from '../actions/actions';
+// components
 import AddSectiontoResume from './AddSectiontoResume';
 
 export default function Section({ sectionId, header, bullets }: SectionType) {
@@ -14,18 +17,10 @@ export default function Section({ sectionId, header, bullets }: SectionType) {
 
   // updates to section should be posted to store, then updated in db
   const handleChange = () => {
-    console.log(headerContent)
     // dispatch new Section object to store
     const payload = {sectionId, header: headerContent, bullets: bulletContent};
-    console.log(payload);
     dispatch(updateSection(payload));
     // send post request to api
-    fetch('/updateSection', {
-      method: 'POST',
-      body: JSON.stringify({
-        sectionId, header: headerContent, bullets: bulletContent
-      })
-    }).then(() => console.log('section updated'))
   }
 
   // create listener for when click occurs outside of component

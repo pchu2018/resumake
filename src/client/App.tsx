@@ -1,7 +1,5 @@
-import './styles/index.css';
 import { useDispatch } from 'react-redux';
 import { initializeStore } from './actions/actions';
-import { getStorageParse } from '../utils';
 import { getInitialState } from './api/storageApi';
 
 import MasterEditorContainer from "./containers/masterEditorContainer";
@@ -9,9 +7,11 @@ import MasterEditorContainer from "./containers/masterEditorContainer";
 export default function App() {
   const dispatch = useDispatch();
 
-  // get state and  and dispatch to store
+  // get state and dispatch to store
   const initialState = getInitialState();
-  dispatch(initializeStore(initialState));
+  if (initialState.profile) {
+    dispatch(initializeStore(initialState));
+  }
 
   return (
     <div >

@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { updateSection } from '../actions/actions';
 import AddSectiontoResume from './AddSectiontoResume';
 
-export default function Section({ databaseId, header, bullets }: SectionType) {
+export default function Section({ sectionId, header, bullets }: SectionType) {
   const [headerContent, setHeaderContent] = useState(header);
   const [bulletContent, setBulletContent] = useState(bullets);
 
@@ -16,14 +16,14 @@ export default function Section({ databaseId, header, bullets }: SectionType) {
   const handleChange = () => {
     console.log(headerContent)
     // dispatch new Section object to store
-    const payload = {databaseId, header: headerContent, bullets: bulletContent};
+    const payload = {sectionId, header: headerContent, bullets: bulletContent};
     console.log(payload);
     dispatch(updateSection(payload));
     // send post request to api
     fetch('/updateSection', {
       method: 'POST',
       body: JSON.stringify({
-        databaseId, header: headerContent, bullets: bulletContent
+        sectionId, header: headerContent, bullets: bulletContent
       })
     }).then(() => console.log('section updated'))
   }
@@ -57,7 +57,7 @@ export default function Section({ databaseId, header, bullets }: SectionType) {
   return (
     <div className={tailwind}>
       {editing ? editable : staticData}
-      <AddSectiontoResume databaseId={databaseId}/>
+      <AddSectiontoResume databaseId={sectionId}/>
     </div>
   )
 }

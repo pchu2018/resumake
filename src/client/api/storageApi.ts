@@ -16,7 +16,7 @@ export function getInitialState(): UserData {
     const sections = getStorageParse('sections');
 
     //pull latest resume to set as current
-    const currentResume = resumes.sort((a: ResumeType, b: ResumeType) => a.lastModified > b.lastModified ? 1 : -1);
+    const currentResume = resumes?.sort((a: ResumeType, b: ResumeType) => a.lastModified > b.lastModified ? 1 : -1);
 
     return {
       profile,

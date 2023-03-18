@@ -13,7 +13,7 @@ export default function SectionContainer() {
 
   // create array of components to render
   const resumeSections = sections.map((comp: SectionType) => {
-    return <Section key={comp.databaseId} databaseId={comp.databaseId} header={comp.header} bullets={comp.bullets} />
+    return <Section key={comp.sectionId} sectionId={comp.sectionId} header={comp.header} bullets={comp.bullets} />
   })
 
   return (
